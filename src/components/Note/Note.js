@@ -7,8 +7,7 @@ const Note = () => (
   <div className="note">
     <p>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat dolor corrupti quae nesciunt,
-      qui natus doloremque itaque aspernatur a, ex cupiditate laborum beatae, ullam esse adipisci
-      molestias quisquam omnis modi.
+      qui natus doloremque itaque aspernatur a.
     </p>
     <div className="note__bottom">
       <p>29 may,2021</p>

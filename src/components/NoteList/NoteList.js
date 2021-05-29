@@ -4,14 +4,17 @@ import './NoteList.css';
 
 const NoteList = () => (
   <div className="notelist">
-    <Note />
-    <Note />
-    <Note />
-    <Note />
-    <Note />
-    <Note />
-    <Note />
-    <Note />
+    <h1 className="noteList__title">Notes</h1>
+    <div className="notelist__grid">
+      <Note />
+      <Note />
+      <Note />
+      <Note />
+      <Note />
+      <Note />
+      <Note />
+      <Note />
+    </div>
   </div>
 );
 
