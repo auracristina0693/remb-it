@@ -1,0 +1,33 @@
+.note {
+  padding: 25px;
+  width: 270px;
+  height: 275px;
+  background-color: #b693f8;
+  border-radius: 8%;
+  font-size: 18px;
+  color: #222222;
+  font-weight: 500;
+}
+
+.note__bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+}
+
+.note__icons {
+  display: flex;
+  width: 85px;
+  justify-content: space-between;
+}
+
+.icon-wrapper {
+  background-color: black;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
