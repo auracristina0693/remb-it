@@ -1,4 +1,7 @@
 .note {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
   padding: 25px;
   width: 270px;
   height: 200px;
