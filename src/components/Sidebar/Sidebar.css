@@ -11,7 +11,43 @@
 .sidebar__icons {
   display: flex;
   flex-direction: column;
-  height: 150px;
+  height: auto;
   justify-content: space-between;
   align-items: center;
+}
+
+.sidebar__colors {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: space-between;
+}
+
+.color-btn {
+  border-radius: 50%;
+  cursor: pointer;
+  border-width: 0;
+  width: 25px;
+  height: 25px;
+  margin: 5px;
+}
+
+.pink {
+  background-color: #ff9aa2;
+  color: #ff9aa2;
+}
+
+.orange {
+  background-color: #ffdac1;
+  color: #ffdac1;
+}
+
+.green {
+  background-color: #b5ead7;
+  color: #b5ead7;
+}
+
+.purple {
+  background-color: #c7ceea;
+  color: #c7ceea;
 }
