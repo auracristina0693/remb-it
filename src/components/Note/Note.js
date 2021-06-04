@@ -1,10 +1,12 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
 import { IoTrash } from 'react-icons/io5';
 import { IoIosColorPalette } from 'react-icons/io';
 import PropTypes from 'prop-types';
 import './Note.css';
 
-const Note = ({ text, color, editNote, id }) => {
+const Note = ({ text, color, editNote, id, deleteNote }) => {
   const onTextChange = (event) => {
     editNote(id, event.target.value, color);
   };
@@ -15,7 +17,7 @@ const Note = ({ text, color, editNote, id }) => {
       <div className="note__bottom">
         <p>29 may,2021</p>
         <div className="note__icons">
-          <div className="icon-wrapper">
+          <div className="icon-wrapper" onClick={() => deleteNote(id)}>
             <IoTrash size={20} color="white" />
           </div>
           <div className="icon-wrapper">
@@ -32,6 +34,7 @@ Note.propTypes = {
   color: PropTypes.string.isRequired,
   editNote: PropTypes.func.isRequired,
   id: PropTypes.number.isRequired,
+  deleteNote: PropTypes.func.isRequired,
 };
 
 export default Note;

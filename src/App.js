@@ -29,13 +29,17 @@ function App() {
     setNotes(notes.map((note) => (note.id === id ? newNote : note)));
   };
 
+  const deleteNote = (id) => {
+    setNotes(notes.filter((note) => note.id !== id));
+  };
+
   return (
     <Router>
       <div className="app">
         <Sidebar createNote={createNote} />
         <Switch>
           <Route path="/">
-            <NoteList notes={notes} editNote={editNote} />
+            <NoteList notes={notes} editNote={editNote} deleteNote={deleteNote} />
           </Route>
           <Route path="/recycle-bin" component={NoteListDeleted} />
         </Switch>
