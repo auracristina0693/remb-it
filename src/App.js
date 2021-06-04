@@ -7,15 +7,26 @@ import './App.css';
 
 function App() {
   const [notes, setNotes] = useState([
-    { text: 'Hacer las tareas de integra', color: '#ff9aa2' },
-    { text: 'ir de compras', color: ' #ffdac1' },
-    { text: 'pagar el internet de claro', color: '#b5ead7' },
-    { text: 'recordar usar react dom', color: '#c7ceea' },
-    { text: 'marejada feliz la canción', color: '#fff87f' },
+    { text: 'Hacer las tareas de integra', color: '#ff9aa2', id: 0 },
+    { text: 'ir de compras', color: ' #ffdac1', id: 1 },
+    { text: 'pagar el internet de claro', color: '#b5ead7', id: 2 },
+    { text: 'recordar usar react dom', color: '#c7ceea', id: 3 },
+    { text: 'marejada feliz la canción', color: '#fff87f', id: 4 },
   ]);
 
   const createNote = (color) => {
-    setNotes([...notes, { text: 'holi', color }]);
+    function newId(array) {
+      const ids = array.map((obj) => obj.id);
+      return Math.max(...ids) + 1;
+    }
+
+    setNotes([...notes, { text: '', color, id: newId(notes) }]);
+  };
+
+  const editNote = (id, text, color) => {
+    const newNote = { id, text, color };
+
+    setNotes(notes.map((note) => (note.id === id ? newNote : note)));
   };
 
   return (
@@ -24,7 +35,7 @@ function App() {
         <Sidebar createNote={createNote} />
         <Switch>
           <Route path="/">
-            <NoteList notes={notes} />
+            <NoteList notes={notes} editNote={editNote} />
           </Route>
           <Route path="/recycle-bin" component={NoteListDeleted} />
         </Switch>

@@ -12,6 +12,13 @@
   font-weight: 500;
 }
 
+.note__input {
+  background-color: transparent;
+  font-size: 18px;
+  border: none;
+  outline: none;
+}
+
 .note__bottom {
   display: flex;
   align-items: center;
