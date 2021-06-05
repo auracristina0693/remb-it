@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './Sidebar.css';
@@ -11,7 +13,7 @@ const Sidebar = ({ createNote }) => {
   const history = useHistory();
   return (
     <div className="sidebar">
-      <img className="sidebar__logo" src={logo} alt="logo" />
+      <img className="sidebar__logo" src={logo} alt="logo" onClick={() => history.push('/')} />
       <div className="sidebar__icons">
         <div>
           <AiFillPlusCircle onClick={() => setShowColors(!showColors)} size={60} />

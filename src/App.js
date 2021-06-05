@@ -14,6 +14,8 @@ function App() {
     { text: 'marejada feliz la canción', color: '#fff87f', id: 4 },
   ]);
 
+  const [deletedNotes, setNotesDeleted] = useState([]);
+
   const createNote = (color) => {
     function newId(array) {
       const ids = array.map((obj) => obj.id);
@@ -30,7 +32,17 @@ function App() {
   };
 
   const deleteNote = (id) => {
+    const deletedNote = notes.find((note) => note.id === id);
+
     setNotes(notes.filter((note) => note.id !== id));
+    setNotesDeleted([...deletedNotes, deletedNote]);
+  };
+
+  const restoreNote = (id) => {
+    const restoredNote = deletedNotes.find((note) => note.id === id);
+
+    setNotesDeleted(deletedNotes.filter((note) => note.id !== id));
+    setNotes([...notes, restoredNote]);
   };
 
   return (
@@ -38,10 +50,12 @@ function App() {
       <div className="app">
         <Sidebar createNote={createNote} />
         <Switch>
-          <Route path="/">
+          <Route path="/" exact>
             <NoteList notes={notes} editNote={editNote} deleteNote={deleteNote} />
           </Route>
-          <Route path="/recycle-bin" component={NoteListDeleted} />
+          <Route path="/recycle-bin" exact>
+            <NoteListDeleted deletedNotes={deletedNotes} restoreNote={restoreNote} />
+          </Route>
         </Switch>
       </div>
     </Router>
