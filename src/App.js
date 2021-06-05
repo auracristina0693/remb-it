@@ -45,6 +45,10 @@ function App() {
     setNotes([...notes, restoredNote]);
   };
 
+  const deletePermanentNote = (id) => {
+    setNotesDeleted(deletedNotes.filter((note) => note.id !== id));
+  };
+
   return (
     <Router>
       <div className="app">
@@ -54,7 +58,11 @@ function App() {
             <NoteList notes={notes} editNote={editNote} deleteNote={deleteNote} />
           </Route>
           <Route path="/recycle-bin" exact>
-            <NoteListDeleted deletedNotes={deletedNotes} restoreNote={restoreNote} />
+            <NoteListDeleted
+              deletedNotes={deletedNotes}
+              restoreNote={restoreNote}
+              deletePermanentNote={deletePermanentNote}
+            />
           </Route>
         </Switch>
       </div>

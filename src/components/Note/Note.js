@@ -7,7 +7,16 @@ import { MdRestore } from 'react-icons/md';
 import PropTypes from 'prop-types';
 import './Note.css';
 
-const Note = ({ text, color, editNote, id, deleteNote, restoreNote, isDeleted }) => {
+const Note = ({
+  text,
+  color,
+  editNote,
+  id,
+  deleteNote,
+  restoreNote,
+  isDeleted,
+  deletePermanentNote,
+}) => {
   const onTextChange = (event) => {
     editNote(id, event.target.value, color);
   };
@@ -31,9 +40,14 @@ const Note = ({ text, color, editNote, id, deleteNote, restoreNote, isDeleted })
               </div>
             </>
           ) : (
-            <div className="icon-wrapper" onClick={() => restoreNote(id)}>
-              <MdRestore size={20} color="white" />
-            </div>
+            <>
+              <div className="icon-wrapper" onClick={() => restoreNote(id)}>
+                <MdRestore size={20} color="white" />
+              </div>
+              <div className="icon-wrapper" onClick={() => deletePermanentNote(id)}>
+                <IoTrash size={20} color="white" />
+              </div>
+            </>
           )}
         </div>
       </div>
@@ -49,6 +63,7 @@ Note.propTypes = {
   deleteNote: PropTypes.func.isRequired,
   isDeleted: PropTypes.bool.isRequired,
   restoreNote: PropTypes.func.isRequired,
+  deletePermanentNote: PropTypes.func.isRequired,
 };
 
 export default Note;

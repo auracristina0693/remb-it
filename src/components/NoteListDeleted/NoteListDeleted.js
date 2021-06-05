@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Note from '../Note';
 import './NoteListDeleted.css';
 
-const NoteListDeleted = ({ deletedNotes, restoreNote }) => (
+const NoteListDeleted = ({ deletedNotes, restoreNote, deletePermanentNote }) => (
   <div className="notelist">
     <h1 className="noteList__title">Recycle Bin</h1>
     <div className="notelist__grid">
@@ -14,6 +14,7 @@ const NoteListDeleted = ({ deletedNotes, restoreNote }) => (
           color={note.color}
           restoreNote={restoreNote}
           isDeleted
+          deletePermanentNote={deletePermanentNote}
         />
       ))}
     </div>
@@ -29,6 +30,7 @@ NoteListDeleted.propTypes = {
     })
   ).isRequired,
   restoreNote: PropTypes.func.isRequired,
+  deletePermanentNote: PropTypes.func.isRequired,
 };
 
 export default NoteListDeleted;
