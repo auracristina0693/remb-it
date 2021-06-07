@@ -12,6 +12,7 @@ const NoteListDeleted = ({ deletedNotes, restoreNote, deletePermanentNote }) => 
           id={note.id}
           text={note.text}
           color={note.color}
+          date={note.date}
           restoreNote={restoreNote}
           isDeleted
           deletePermanentNote={deletePermanentNote}

@@ -4,11 +4,11 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './Sidebar.css';
 import { AiFillPlusCircle } from 'react-icons/ai';
-import { FcEmptyTrash } from 'react-icons/fc';
+import { FcEmptyTrash, FcFullTrash } from 'react-icons/fc';
 import { useHistory } from 'react-router-dom';
 import logo from '../../assets/images/logo.png';
 
-const Sidebar = ({ createNote }) => {
+const Sidebar = ({ createNote, deletedNotes }) => {
   const [showColors, setShowColors] = useState(false);
   const history = useHistory();
   return (
@@ -50,7 +50,11 @@ const Sidebar = ({ createNote }) => {
           </div>
         )}
         <div>
-          <FcEmptyTrash color="red" size={70} onClick={() => history.push('/recycle-bin')} />
+          {deletedNotes.length > 0 ? (
+            <FcFullTrash size={70} onClick={() => history.push('/recycle-bin')} />
+          ) : (
+            <FcEmptyTrash size={70} onClick={() => history.push('/recycle-bin')} />
+          )}
         </div>
       </div>
     </div>
@@ -59,6 +63,13 @@ const Sidebar = ({ createNote }) => {
 
 Sidebar.propTypes = {
   createNote: PropTypes.func.isRequired,
+  deletedNotes: PropTypes.arrayOf(
+    PropTypes.shape({
+      text: PropTypes.string,
+      color: PropTypes.string,
+      id: PropTypes.numb,
+    })
+  ).isRequired,
 };
 
 export default Sidebar;

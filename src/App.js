@@ -4,25 +4,26 @@ import NoteList from './components/NoteList';
 import Sidebar from './components/Sidebar';
 import NoteListDeleted from './components/NoteListDeleted';
 import './App.css';
+import getDate from './utils/getDate';
 
 function App() {
   const [notes, setNotes] = useState([
-    { text: 'Hacer las tareas de integra', color: '#ff9aa2', id: 0 },
-    { text: 'ir de compras', color: ' #ffdac1', id: 1 },
-    { text: 'pagar el internet de claro', color: '#b5ead7', id: 2 },
-    { text: 'recordar usar react dom', color: '#c7ceea', id: 3 },
-    { text: 'marejada feliz la canción', color: '#fff87f', id: 4 },
+    { text: ' Hacer las tareas de integra', color: '#ff9aa2', id: 0, date: '06/05/1993' },
+    { text: 'ir de compras', color: ' #ffdac1', id: 1, date: '06/05/1993' },
+    { text: 'pagar el internet de claro', color: '#b5ead7', id: 2, date: '06/05/1993' },
+    { text: 'recordar usar react dom', color: '#c7ceea', id: 3, date: '06/05/1993' },
+    { text: 'marejada feliz la canción', color: '#fff87f', id: 4, date: '06/05/1993' },
   ]);
 
   const [deletedNotes, setNotesDeleted] = useState([]);
 
-  const createNote = (color) => {
+  const createNote = async (color) => {
     function newId(array) {
       const ids = array.map((obj) => obj.id);
       return Math.max(...ids) + 1;
     }
 
-    setNotes([...notes, { text: '', color, id: newId(notes) }]);
+    setNotes([...notes, { text: '', color, id: newId(notes), date: getDate() }]);
   };
 
   const editNote = (id, text, color) => {
@@ -52,7 +53,7 @@ function App() {
   return (
     <Router>
       <div className="app">
-        <Sidebar createNote={createNote} />
+        <Sidebar createNote={createNote} deletedNotes={deletedNotes} />
         <Switch>
           <Route path="/" exact>
             <NoteList notes={notes} editNote={editNote} deleteNote={deleteNote} />

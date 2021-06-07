@@ -12,6 +12,7 @@ const Note = ({
   color,
   editNote,
   id,
+  date,
   deleteNote,
   restoreNote,
   isDeleted,
@@ -28,7 +29,7 @@ const Note = ({
     >
       <input value={text} className="note__input" onChange={onTextChange} />
       <div className="note__bottom">
-        <p>29 may,2021</p>
+        <p>{date}</p>
         <div className="note__icons">
           {!isDeleted ? (
             <>
@@ -60,6 +61,7 @@ Note.propTypes = {
   color: PropTypes.string.isRequired,
   editNote: PropTypes.func.isRequired,
   id: PropTypes.number.isRequired,
+  date: PropTypes.string.isRequired,
   deleteNote: PropTypes.func.isRequired,
   isDeleted: PropTypes.bool.isRequired,
   restoreNote: PropTypes.func.isRequired,
