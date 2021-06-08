@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Note from '../Note';
 import './NoteList.css';
 
-const NoteList = ({ notes, editNote, deleteNote }) => (
+const NoteList = ({ notes, editNote, deleteNote, editColor }) => (
   <div className="notelist">
     <h1 className="noteList__title">Notes</h1>
     <div className="notelist__grid">
@@ -15,6 +15,7 @@ const NoteList = ({ notes, editNote, deleteNote }) => (
           date={note.date}
           editNote={editNote}
           deleteNote={deleteNote}
+          editColor={editColor}
         />
       ))}
     </div>
@@ -30,6 +31,7 @@ NoteList.propTypes = {
   ).isRequired,
   editNote: PropTypes.func.isRequired,
   deleteNote: PropTypes.func.isRequired,
+  editColor: PropTypes.func.isRequired,
 };
 
 export default NoteList;

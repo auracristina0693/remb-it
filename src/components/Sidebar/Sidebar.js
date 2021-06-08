@@ -7,6 +7,7 @@ import { AiFillPlusCircle } from 'react-icons/ai';
 import { FcEmptyTrash, FcFullTrash } from 'react-icons/fc';
 import { useHistory } from 'react-router-dom';
 import logo from '../../assets/images/logo.png';
+import { COLORS } from '../../utils/constants';
 
 const Sidebar = ({ createNote, deletedNotes }) => {
   const [showColors, setShowColors] = useState(false);
@@ -20,30 +21,38 @@ const Sidebar = ({ createNote, deletedNotes }) => {
         </div>
         {showColors && (
           <div className="sidebar__colors">
-            <button type="button" className="color-btn pink" onClick={() => createNote('#ff9aa2')}>
+            <button
+              type="button"
+              className="color-btn pink"
+              onClick={() => createNote(COLORS.pink)}
+            >
               +
             </button>
             <button
               type="button"
               className="color-btn orange"
-              onClick={() => createNote('#ffdac1')}
+              onClick={() => createNote(COLORS.orange)}
             >
               +
             </button>
-            <button type="button" className="color-btn green" onClick={() => createNote('#b5ead7')}>
+            <button
+              type="button"
+              className="color-btn green"
+              onClick={() => createNote(COLORS.green)}
+            >
               +
             </button>
             <button
               type="button"
               className="color-btn purple"
-              onClick={() => createNote('#c7ceea')}
+              onClick={() => createNote(COLORS.purple)}
             >
               +
             </button>
             <button
               type="button"
               className="color-btn yellow"
-              onClick={() => createNote('#fff87f')}
+              onClick={() => createNote(COLORS.yellow)}
             >
               +
             </button>

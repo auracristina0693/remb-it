@@ -5,19 +5,20 @@ import Sidebar from './components/Sidebar';
 import NoteListDeleted from './components/NoteListDeleted';
 import './App.css';
 import getDate from './utils/getDate';
+import { COLORS } from './utils/constants';
 
 function App() {
   const [notes, setNotes] = useState([
-    { text: ' Hacer las tareas de integra', color: '#ff9aa2', id: 0, date: '06/05/1993' },
-    { text: 'ir de compras', color: ' #ffdac1', id: 1, date: '06/05/1993' },
-    { text: 'pagar el internet de claro', color: '#b5ead7', id: 2, date: '06/05/1993' },
-    { text: 'recordar usar react dom', color: '#c7ceea', id: 3, date: '06/05/1993' },
-    { text: 'marejada feliz la canción', color: '#fff87f', id: 4, date: '06/05/1993' },
+    { text: ' Hacer las tareas de integra', color: COLORS.pink, id: 0, date: '06/05/1993' },
+    { text: 'ir de compras', color: COLORS.orange, id: 1, date: '06/05/1993' },
+    { text: 'pagar el internet de claro', color: COLORS.green, id: 2, date: '06/05/1993' },
+    { text: 'recordar usar react dom', color: COLORS.purple, id: 3, date: '06/05/1993' },
+    { text: 'marejada feliz la canción', color: COLORS.yellow, id: 4, date: '06/05/1993' },
   ]);
 
   const [deletedNotes, setNotesDeleted] = useState([]);
 
-  const createNote = async (color) => {
+  const createNote = (color) => {
     function newId(array) {
       const ids = array.map((obj) => obj.id);
       return Math.max(...ids) + 1;
@@ -30,6 +31,12 @@ function App() {
     const newNote = { id, text, color };
 
     setNotes(notes.map((note) => (note.id === id ? newNote : note)));
+  };
+
+  const editColor = (id, color) => {
+    const noteFind = notes.find((note) => note.id === id);
+    const noteEdited = { ...noteFind, color };
+    setNotes(notes.map((note) => (note.id === id ? noteEdited : note)));
   };
 
   const deleteNote = (id) => {
@@ -56,7 +63,12 @@ function App() {
         <Sidebar createNote={createNote} deletedNotes={deletedNotes} />
         <Switch>
           <Route path="/" exact>
-            <NoteList notes={notes} editNote={editNote} deleteNote={deleteNote} />
+            <NoteList
+              notes={notes}
+              editNote={editNote}
+              deleteNote={deleteNote}
+              editColor={editColor}
+            />
           </Route>
           <Route path="/recycle-bin" exact>
             <NoteListDeleted
