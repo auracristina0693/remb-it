@@ -1,12 +1,10 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState } from 'react';
 import { IoTrash } from 'react-icons/io5';
-import { IoIosColorPalette } from 'react-icons/io';
-import { MdRestore } from 'react-icons/md';
+import { IoIosColorPalette as ColorPalette } from 'react-icons/io';
+import { MdRestore as RestoreIcon } from 'react-icons/md';
 import PropTypes from 'prop-types';
 import './Note.css';
-import { COLORS } from '../../utils/constants';
+import { BACKGROUND_COLORS } from '../../utils/constants';
 
 const Note = ({
   text,
@@ -21,77 +19,60 @@ const Note = ({
   editColor,
 }) => {
   const onTextChange = (event) => {
-    editNote(id, event.target.value, color);
+    editNote(id, event.target.value, color, date);
   };
   const [showColors, setshowColors] = useState(false);
 
+  const colorsOptions = Object.values(BACKGROUND_COLORS).filter(
+    (colorOption) => colorOption !== color
+  );
+
   return (
-    <div
-      className="note"
-      style={isDeleted ? { backgroundColor: 'lightgray' } : { backgroundColor: color }}
-    >
-      <input value={text} className="note__input" onChange={onTextChange} />
+    <div className={`note ${isDeleted ? 'bg-gray' : color}`}>
+      <textarea value={text} className="note__input" onChange={onTextChange} />
       <div className="note__bottom">
         <p>{date}</p>
         <div className="note__icons">
           {!isDeleted ? (
             <>
-              <div className="icon-wrapper" onClick={() => deleteNote(id)}>
+              <button type="button" className="icon-wrapper" onClick={() => deleteNote(id)}>
                 <IoTrash size={20} color="white" />
-              </div>
-              <div className="icon-wrapper" onClick={() => setshowColors(!showColors)}>
-                <IoIosColorPalette size={20} color="white" />
-              </div>
+              </button>
+              <button
+                type="button"
+                className="icon-wrapper"
+                onClick={() => setshowColors(!showColors)}
+              >
+                <ColorPalette size={20} color="white" />
+              </button>
             </>
           ) : (
             <>
-              <div className="icon-wrapper" onClick={() => restoreNote(id)}>
-                <MdRestore size={20} color="white" />
-              </div>
-              <div className="icon-wrapper" onClick={() => deletePermanentNote(id)}>
+              <button type="button" className="icon-wrapper" onClick={() => restoreNote(id)}>
+                <RestoreIcon size={20} color="white" />
+              </button>
+              <button
+                type="button"
+                className="icon-wrapper"
+                onClick={() => deletePermanentNote(id)}
+              >
                 <IoTrash size={20} color="white" />
-              </div>
+              </button>
             </>
           )}
         </div>
       </div>
       {showColors && (
         <div className="note__colors">
-          <button
-            type="button"
-            className="color-btn pink"
-            onClick={() => editColor(id, COLORS.pink)}
-          >
-            +
-          </button>
-          <button
-            type="button"
-            className="color-btn orange"
-            onClick={() => editColor(id, COLORS.orange)}
-          >
-            +
-          </button>
-          <button
-            type="button"
-            className="color-btn green"
-            onClick={() => editColor(id, COLORS.green)}
-          >
-            +
-          </button>
-          <button
-            type="button"
-            className="color-btn purple"
-            onClick={() => editColor(id, COLORS.purple)}
-          >
-            +
-          </button>
-          <button
-            type="button"
-            className="color-btn yellow"
-            onClick={() => editColor(id, COLORS.yellow)}
-          >
-            +
-          </button>
+          {colorsOptions.map((colorOpt) => (
+            <button
+              type="button"
+              className={`color-btn ${colorOpt}`}
+              onClick={() => editColor(id, colorOpt)}
+            >
+              .
+            </button>
+          ))}
         </div>
       )}
     </div>

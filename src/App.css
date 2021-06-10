@@ -1,5 +1,37 @@
 .app {
   display: grid;
   grid-template-columns: 1fr 5fr;
-  padding: 20px;
+}
+
+.bg-pink {
+  background-color: #ff9aa2;
+}
+
+.bg-orange {
+  background-color: #ffdac1;
+}
+
+.bg-green {
+  background-color: #b5ead7;
+}
+
+.bg-purple {
+  background-color: #c7ceea;
+}
+
+.bg-yellow {
+  background-color: #fff87f;
+}
+
+.bg-gray {
+  background-color: lightgray;
+}
+
+.icon-btn {
+  border: none;
+  cursor: pointer;
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  background-color: transparent;
 }

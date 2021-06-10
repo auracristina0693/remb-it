@@ -1,58 +1,73 @@
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './Sidebar.css';
-import { AiFillPlusCircle } from 'react-icons/ai';
+import { AiFillPlusCircle as AddIcon } from 'react-icons/ai';
+import { IoArrowBackCircle as BackIcon } from 'react-icons/io5';
 import { FcEmptyTrash, FcFullTrash } from 'react-icons/fc';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import logo from '../../assets/images/logo.png';
-import { COLORS } from '../../utils/constants';
+import { BACKGROUND_COLORS } from '../../utils/constants';
 
 const Sidebar = ({ createNote, deletedNotes }) => {
   const [showColors, setShowColors] = useState(false);
   const history = useHistory();
+  const location = useLocation();
+  const currentPath = location.pathname;
+
   return (
     <div className="sidebar">
-      <img className="sidebar__logo" src={logo} alt="logo" onClick={() => history.push('/')} />
+      <Link to="/">
+        <img className="sidebar__logo" src={logo} alt="logo" />
+      </Link>
+
       <div className="sidebar__icons">
         <div>
-          <AiFillPlusCircle onClick={() => setShowColors(!showColors)} size={60} />
+          {currentPath === '/' && (
+            <button type="button" onClick={() => setShowColors(!showColors)} className="icon-btn">
+              <AddIcon size={60} />
+            </button>
+          )}
+          {currentPath === '/recycle-bin' && (
+            <button type="button" onClick={() => history.push('/')} className="icon-btn">
+              <BackIcon size={60} />
+            </button>
+          )}
         </div>
+
         {showColors && (
           <div className="sidebar__colors">
             <button
               type="button"
               className="color-btn pink"
-              onClick={() => createNote(COLORS.pink)}
+              onClick={() => createNote(BACKGROUND_COLORS.pink)}
             >
               +
             </button>
             <button
               type="button"
               className="color-btn orange"
-              onClick={() => createNote(COLORS.orange)}
+              onClick={() => createNote(BACKGROUND_COLORS.orange)}
             >
               +
             </button>
             <button
               type="button"
               className="color-btn green"
-              onClick={() => createNote(COLORS.green)}
+              onClick={() => createNote(BACKGROUND_COLORS.green)}
             >
               +
             </button>
             <button
               type="button"
               className="color-btn purple"
-              onClick={() => createNote(COLORS.purple)}
+              onClick={() => createNote(BACKGROUND_COLORS.purple)}
             >
               +
             </button>
             <button
               type="button"
               className="color-btn yellow"
-              onClick={() => createNote(COLORS.yellow)}
+              onClick={() => createNote(BACKGROUND_COLORS.yellow)}
             >
               +
             </button>
@@ -60,9 +75,13 @@ const Sidebar = ({ createNote, deletedNotes }) => {
         )}
         <div>
           {deletedNotes.length > 0 ? (
-            <FcFullTrash size={70} onClick={() => history.push('/recycle-bin')} />
+            <Link to="/recycle-bin">
+              <FcFullTrash size={70} />
+            </Link>
           ) : (
-            <FcEmptyTrash size={70} onClick={() => history.push('/recycle-bin')} />
+            <Link to="/recycle-bin">
+              <FcEmptyTrash size={70} />
+            </Link>
           )}
         </div>
       </div>

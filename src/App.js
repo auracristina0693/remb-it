@@ -1,22 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import NoteList from './components/NoteList';
 import Sidebar from './components/Sidebar';
 import NoteListDeleted from './components/NoteListDeleted';
 import './App.css';
 import getDate from './utils/getDate';
-import { COLORS } from './utils/constants';
+import useLocalStorage from './hooks/useLocalStorage';
 
 function App() {
-  const [notes, setNotes] = useState([
-    { text: ' Hacer las tareas de integra', color: COLORS.pink, id: 0, date: '06/05/1993' },
-    { text: 'ir de compras', color: COLORS.orange, id: 1, date: '06/05/1993' },
-    { text: 'pagar el internet de claro', color: COLORS.green, id: 2, date: '06/05/1993' },
-    { text: 'recordar usar react dom', color: COLORS.purple, id: 3, date: '06/05/1993' },
-    { text: 'marejada feliz la canción', color: COLORS.yellow, id: 4, date: '06/05/1993' },
-  ]);
+  const [notes, setNotes] = useLocalStorage('notes', []);
 
-  const [deletedNotes, setNotesDeleted] = useState([]);
+  const [deletedNotes, setNotesDeleted] = useLocalStorage('deletedNotes', []);
 
   const createNote = (color) => {
     function newId(array) {
@@ -27,8 +21,8 @@ function App() {
     setNotes([...notes, { text: '', color, id: newId(notes), date: getDate() }]);
   };
 
-  const editNote = (id, text, color) => {
-    const newNote = { id, text, color };
+  const editNote = (id, text, color, date) => {
+    const newNote = { id, text, color, date };
 
     setNotes(notes.map((note) => (note.id === id ? newNote : note)));
   };

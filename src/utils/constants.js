@@ -6,3 +6,11 @@ export const COLORS = {
   purple: '#c7ceea',
   yellow: '#fff87f',
 };
+
+export const BACKGROUND_COLORS = {
+  pink: 'bg-pink',
+  orange: 'bg-orange',
+  green: 'bg-green',
+  purple: 'bg-purple',
+  yellow: 'bg-yellow',
+};
