@@ -8,3 +8,9 @@
   font-size: 64px;
   margin: 20px 0 20px 0;
 }
+
+@media (max-width: 426px) {
+  .noteList__title {
+    font-size: 28px;
+  }
+}

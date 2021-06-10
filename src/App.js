@@ -55,23 +55,25 @@ function App() {
     <Router>
       <div className="app">
         <Sidebar createNote={createNote} deletedNotes={deletedNotes} />
-        <Switch>
-          <Route path="/" exact>
-            <NoteList
-              notes={notes}
-              editNote={editNote}
-              deleteNote={deleteNote}
-              editColor={editColor}
-            />
-          </Route>
-          <Route path="/recycle-bin" exact>
-            <NoteListDeleted
-              deletedNotes={deletedNotes}
-              restoreNote={restoreNote}
-              deletePermanentNote={deletePermanentNote}
-            />
-          </Route>
-        </Switch>
+        <div className="main">
+          <Switch>
+            <Route path="/" exact>
+              <NoteList
+                notes={notes}
+                editNote={editNote}
+                deleteNote={deleteNote}
+                editColor={editColor}
+              />
+            </Route>
+            <Route path="/recycle-bin" exact>
+              <NoteListDeleted
+                deletedNotes={deletedNotes}
+                restoreNote={restoreNote}
+                deletePermanentNote={deletePermanentNote}
+              />
+            </Route>
+          </Switch>
+        </div>
       </div>
     </Router>
   );

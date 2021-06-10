@@ -32,6 +32,24 @@
   margin: 5px;
 }
 
+@media (max-width: 426px) {
+  .sidebar {
+    flex-direction: row;
+    position: fixed;
+    z-index: 1;
+    bottom: 0;
+    background: white;
+    justify-content: center;
+    width: 100%;
+  }
+  .sidebar__icons {
+    flex-direction: row;
+  }
+  .sidebar__logo {
+    width: 80px;
+  }
+}
+
 .pink {
   background-color: #ff9aa2;
   color: #ff9aa2;

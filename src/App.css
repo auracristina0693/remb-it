@@ -1,6 +1,22 @@
+.sidebar {
+  grid-area: sidebar;
+}
+
+.main {
+  grid-area: main;
+}
+
 .app {
   display: grid;
   grid-template-columns: 1fr 5fr;
+  grid-template-areas: 'sidebar main main main main main';
+}
+
+@media (max-width: 426px) {
+  .app {
+    grid-template-columns: 1fr;
+    grid-template-areas: 'main' 'sidebar';
+  }
 }
 
 .bg-pink {
