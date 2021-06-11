@@ -1,70 +1,45 @@
-# Getting Started with Create React App
+# Welcome to Remb-it
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This application consists of a workspace where a user can create notes, edit them, change the color, delete them. In case a user wants to restore a deleted note or delete it permanently, the user can do it in the recycle bin
 
-## Available Scripts
+Project made in React and following the airbnb style guides.
 
-In the project directory, you can run:
+## Launch locally
 
-### `npm start`
+```shell
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+$ git clone https://github.com/auracristina0693/remb-it.git
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+$ cd remb-it
 
-### `npm test`
+$ npm install
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+$ npm run start
 
-### `npm run build`
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Operation of the application
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Create a note
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+To create a note in the home view, the user must click on the + sign and a color menu will be displayed, after clicking on a color an empty note will be created in the workspace with the date of the moment of creation.
 
-### `npm run eject`
+2. Edit a note
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+To edit a note the user must click on the note to be able to write in it, the text will be saved automatically while it is being written.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+3. change the color of a note
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+To change the background color of a note, the user must click on the color palette icon for each note and a color menu will be displayed to select a new color.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+4. Delete a note
 
-## Learn More
+To delete a note, the user must click on the note's trash icon and this note will be transferred to the recycle bin.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+5. Restore a note
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+To restore a note in the recycle bin view, the user must click on the restore icon and this note will return to the workspace.
 
-### Code Splitting
+6. Permanently delete a note
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+To delete a note permanently in the recycle bin view, the user must click on the trash icon and the note will disappear permanently.
