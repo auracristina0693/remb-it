@@ -10,11 +10,13 @@
   display: grid;
   grid-template-columns: 1fr 5fr;
   grid-template-areas: 'sidebar main main main main main';
+  height: 100vh;
 }
 
 @media (max-width: 426px) {
   .app {
     grid-template-columns: 1fr;
+    grid-template-rows: 3fr 0.5fr;
     grid-template-areas: 'main' 'sidebar';
   }
 }

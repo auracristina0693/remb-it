@@ -6,6 +6,7 @@ import NoteListDeleted from './components/NoteListDeleted';
 import './App.css';
 import getDate from './utils/getDate';
 import useLocalStorage from './hooks/useLocalStorage';
+import getNewId from './utils/getNewId';
 
 function App() {
   const [notes, setNotes] = useLocalStorage('notes', []);
@@ -13,12 +14,7 @@ function App() {
   const [deletedNotes, setNotesDeleted] = useLocalStorage('deletedNotes', []);
 
   const createNote = (color) => {
-    function newId(array) {
-      const ids = array.map((obj) => obj.id);
-      return Math.max(...ids) + 1;
-    }
-
-    setNotes([...notes, { text: '', color, id: newId(notes), date: getDate() }]);
+    setNotes([...notes, { text: '', color, id: getNewId(notes), date: getDate() }]);
   };
 
   const editNote = (id, text, color, date) => {

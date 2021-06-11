@@ -35,7 +35,7 @@
 @media (max-width: 426px) {
   .sidebar {
     flex-direction: row;
-    position: fixed;
+    position: sticky;
     z-index: 1;
     bottom: 0;
     background: white;

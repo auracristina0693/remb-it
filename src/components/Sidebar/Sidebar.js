@@ -34,7 +34,7 @@ const Sidebar = ({ createNote, deletedNotes }) => {
           )}
         </div>
 
-        {showColors && (
+        {showColors && currentPath === '/' && (
           <div className="sidebar__colors">
             <button
               type="button"

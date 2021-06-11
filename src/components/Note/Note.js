@@ -80,16 +80,26 @@ const Note = ({
 };
 
 Note.propTypes = {
+  id: PropTypes.number,
+  isDeleted: PropTypes.bool,
+  restoreNote: PropTypes.func,
+  deletePermanentNote: PropTypes.func,
+  editNote: PropTypes.func,
+  deleteNote: PropTypes.func,
+  editColor: PropTypes.func,
   text: PropTypes.string.isRequired,
   color: PropTypes.string.isRequired,
-  editNote: PropTypes.func.isRequired,
-  id: PropTypes.number.isRequired,
   date: PropTypes.string.isRequired,
-  deleteNote: PropTypes.func.isRequired,
-  isDeleted: PropTypes.bool.isRequired,
-  restoreNote: PropTypes.func.isRequired,
-  deletePermanentNote: PropTypes.func.isRequired,
-  editColor: PropTypes.func.isRequired,
+};
+
+Note.defaultProps = {
+  id: 0,
+  isDeleted: false,
+  restoreNote: () => {},
+  deletePermanentNote: () => {},
+  editNote: () => {},
+  deleteNote: () => {},
+  editColor: () => {},
 };
 
 export default Note;

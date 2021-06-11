@@ -54,3 +54,9 @@
   right: 28px;
   bottom: 80px;
 }
+
+@media (max-width: 426px) {
+  .note {
+    justify-self: center;
+  }
+}
