@@ -4,6 +4,8 @@ This application consists of a workspace where a user can create notes, edit the
 
 Project made in React and following the airbnb style guides.
 
+You can try the application here: [Remb-it](https://remb-it.vercel.app/)
+
 ## Launch locally
 
 ```shell
